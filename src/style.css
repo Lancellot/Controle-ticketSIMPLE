@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #2193b0, #6dd5ed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.counters-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.counter-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.counter-box:hover {
+    transform: translateY(-5px);
+}
+
+.counter-title {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.counter {
+    font-size: 3em;
+    font-weight: bold;
+    color: #2193b0;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-add {
+    background: #2193b0;
+    color: white;
+}
+
+.btn-add:hover {
+    background: #1a7a8f;
+    transform: scale(1.05);
+}
+
+.btn-reset {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-reset:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .counter {
+        font-size: 2.5em;
+    }
+}
