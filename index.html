@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Atendimentos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Controle Diário de Atendimento</h1>
+        <div class="counters-container">
+            <div class="counter-box">
+                <div class="counter-title">Ligações Atendidas</div>
+                <div class="counter" id="callsCounter">0</div>
+                <div class="button-container">
+                    <button class="btn btn-add" onclick="incrementCounter('callsCounter')">+1</button>
+                    <button class="btn btn-reset" onclick="resetCounter('callsCounter')">Zerar</button>
+                </div>
+            </div>
+            
+            <div class="counter-box">
+                <div class="counter-title">Tickets Resolvidos</div>
+                <div class="counter" id="ticketsCounter">0</div>
+                <div class="button-container">
+                    <button class="btn btn-add" onclick="incrementCounter('ticketsCounter')">+1</button>
+                    <button class="btn btn-reset" onclick="resetCounter('ticketsCounter')">Zerar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
