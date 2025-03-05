@@ -2,8 +2,10 @@
 function loadCounters() {
     ['incidentCounter', 'requestCounter', 'ticketsCounter'].forEach(id => {
         const storedValue = localStorage.getItem(id);
-        if (storedValue) {
+        if (storedValue !== null) {
             document.getElementById(id).textContent = storedValue;
+        } else {
+            localStorage.setItem(id, 0);
         }
     });
     checkDailyReset();
@@ -14,14 +16,14 @@ function loadCounters() {
 function incrementCounter(counterId) {
     const counter = document.getElementById(counterId);
     let value = parseInt(counter.textContent) || 0;
-    counter.textContent = ++value;
+    value++;
+    counter.textContent = value;
     localStorage.setItem(counterId, value);
 }
 
 // Reseta o contador
 function resetCounter(counterId) {
-    const counter = document.getElementById(counterId);
-    counter.textContent = '0';
+    document.getElementById(counterId).textContent = '0';
     localStorage.setItem(counterId, 0);
 }
 
