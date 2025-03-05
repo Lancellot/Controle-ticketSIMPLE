@@ -1,13 +1,13 @@
 // Carrega os contadores do localStorage
 function loadCounters() {
-    ['callsCounter', 'ticketsCounter'].forEach(id => {
+    ['incidentCounter', 'requestCounter', 'ticketsCounter'].forEach(id => {
         const storedValue = localStorage.getItem(id);
         if (storedValue) {
             document.getElementById(id).textContent = storedValue;
         }
     });
-    
     checkDailyReset();
+    loadHistory();
 }
 
 // Incrementa o contador
@@ -25,18 +25,47 @@ function resetCounter(counterId) {
     localStorage.setItem(counterId, 0);
 }
 
+// Salva histórico diário antes de resetar
+function saveHistory() {
+    const date = new Date().toDateString();
+    const history = JSON.parse(localStorage.getItem('history')) || [];
+    const dailyRecord = {
+        date,
+        incidents: localStorage.getItem('incidentCounter') || 0,
+        requests: localStorage.getItem('requestCounter') || 0,
+        tickets: localStorage.getItem('ticketsCounter') || 0
+    };
+    history.push(dailyRecord);
+    localStorage.setItem('history', JSON.stringify(history));
+}
+
 // Verifica se precisa resetar diariamente
 function checkDailyReset() {
     const lastReset = localStorage.getItem('lastReset');
     const currentDate = new Date().toDateString();
     
     if (!lastReset || lastReset !== currentDate) {
-        ['callsCounter', 'ticketsCounter'].forEach(id => {
+        saveHistory();
+        ['incidentCounter', 'requestCounter', 'ticketsCounter'].forEach(id => {
             localStorage.setItem(id, 0);
             document.getElementById(id).textContent = '0';
         });
         localStorage.setItem('lastReset', currentDate);
+        loadHistory();
     }
+}
+
+// Carrega o histórico
+function loadHistory() {
+    const history = JSON.parse(localStorage.getItem('history')) || [];
+    const historyContainer = document.getElementById('historyContainer');
+    historyContainer.innerHTML = '';
+    history.slice(-7).reverse().forEach(record => {
+        const entry = document.createElement('div');
+        entry.className = 'history-entry';
+        entry.innerHTML = `<strong>${record.date}</strong> - Incidentes: ${record.incidents}, Solicitações: ${record.requests}, Tickets: ${record.tickets}`;
+        historyContainer.appendChild(entry);
+    });
 }
 
 // Inicializa os contadores
