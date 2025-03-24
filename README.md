@@ -26,11 +26,11 @@ Este projeto é uma aplicação web simples para controle diário de atendimento
 ## 🚀 Como Executar
 1. Clone este repositório:
    ```sh
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/lancellot/Controle-ticketSIMPLE.git
    ```
 2. Acesse a pasta do projeto:
    ```sh
-   cd nome-do-projeto
+   cd Controle-ticketSIMPLE
    ```
 3. Abra o arquivo `index.html` em um navegador.
 
